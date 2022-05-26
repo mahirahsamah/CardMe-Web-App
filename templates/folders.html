@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<!-- CardMe | CSCE 315 Section 900 Team 3 | Kiran Bhattarai, Jackson Hagood, and Mahirah Samah -->
+
+<html>
+    <head>
+        <title>CardMe | Folders</title>
+
+        <link id = "theme" rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='css/style.css')}}"/>
+
+        <script>
+            function changeTheme() {
+                var style = document.getElementsByTagName("link")[0]; 
+
+                if (style.getAttribute("href") == "{{url_for('static', filename='css/style.css')}}") {
+                    style.setAttribute("href", "{{url_for('static', filename='css/contrast.css')}}"); 
+                    localStorage.setItem("sheet", "{{url_for('static', filename='css/contrast.css')}}");
+                } else { 
+                    style.setAttribute("href", "{{url_for('static', filename='css/style.css')}}"); 
+                    localStorage.setItem("sheet", "{{url_for('static', filename='css/style.css')}}");
+                }
+            }
+
+            window.onload = function() {
+                if (localStorage.getItem("sheet") == "{{url_for('static', filename='css/style.css')}}" || localStorage.getItem("sheet") == "{{url_for('static', filename='css/contrast.css')}}") {
+                    document.getElementsByTagName("link")[0].setAttribute("href", localStorage.getItem("sheet"));
+                } else {
+                    document.getElementsByTagName("link")[0].setAttribute("href", "{{url_for('static', filename='css/style.css')}}");
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <a id = "name" href = "/index"><img src = "{{url_for('static', filename='img/Logo.png')}}" alt = "About"></a>
+
+            <div class = "navigation">
+                <a href = "/folders">My Folders</a>
+                <a href = "/uploadimage">Upload</a>
+            </div>
+        </header>
+
+        <article>
+            <div class = "center">
+                <h1>My Folders</h1>
+
+                <hr>
+
+                <p>     
+                    {%for item in mylist%}
+                        <div class = "folder_name">
+                            <form action = "{{ url_for('runFlashcards') }}" method="post">
+                                <th><button class = "folders_btn" type = "text" name = "item_fn" value={{ item }} required>{{item}}</button></th>
+                            </form>
+                        </div>
+                    {%endfor%}
+    
+                    {{data}}
+                </p>
+            </div>
+
+            <div class = "center"></div>
+        </article>
+        
+        <footer>
+            <p>CSCE 315 Section 900 Team 3</p>
+
+            <button onclick = "changeTheme()" class = "btn" style = "margin-bottom: 16px">Accessibility Mode</button>
+        </footer>
+    </body>
+</html>

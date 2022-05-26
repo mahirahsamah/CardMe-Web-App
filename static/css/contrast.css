@@ -1,0 +1,181 @@
+/* CardMe | CSCE 315 Section 900 Team 3 | Kiran Bhattarai, Jackson Hagood, and Mahirah Samah */
+
+@font-face {
+    font-family: Noto;
+    src: url("NotoSans.ttf");
+}
+
+body {
+    color: #FF00FF;
+    font-family: Noto;
+    margin: 0;
+}
+
+header {
+    background-color: #000000;
+    border-bottom: solid 15px #FFFFFF;
+    height: 120px;
+    overflow: hidden;   
+}
+
+header img {
+    float: left;
+    height: 100%;
+    margin-left: 15%;
+}
+
+.navigation {
+    margin-right: 15%;
+    padding: 20px 0px 20px 0px;
+}
+
+.navigation a {
+    color: #FF00FF;
+    float: right;
+    font-size: 30px;
+    padding: 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.navigation a:hover {
+    color: #00FFFF;
+}
+
+article {
+    background-color: #000000;
+    color: #FF00FF;
+    min-height: 100vh;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+article h1 {
+    font-size: 40px;
+}
+
+article p {
+    font-size: 30px;
+}
+
+article hr {
+    border: 2px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+
+article a {
+    font-size: 30px;
+    color: #00FFFF;
+}
+
+.center {
+    clear: both;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+footer {
+    background-color: #000000;
+    border-top: solid 15px #FFFFFF;
+    overflow: hidden;
+    padding: 30px 0px 30px 0px;
+    text-align: center;
+}
+
+footer p {
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.btn {
+    background-color: #FF00FF;
+    border: none;
+    color: #252525;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 32px;
+    margin: 8px 0px;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* flashcards display formatting */
+
+.flashcards-pane {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+}
+
+.input-wraper {
+    display: none;
+}
+
+label div.card-data {
+    transition: 1s;
+}
+
+.input-wraper:checked + label div.card-data{
+    transform: rotateY(180deg);
+}
+
+.single-card {
+    height: 200px;
+    margin: 3%;
+    width: 94%;
+}
+
+.flip-pane {
+    height: 200px;
+    margin: 3%;
+    width: 94%;
+}
+
+.card-data {
+    align-items: center;
+    background-color: #252525;
+    border: none;
+    height: 200px;
+    outline: 5px solid #FF00FF; 
+    position: relative;
+    width: 100%;
+}
+
+.card-data .word{
+    justify-content: center;
+    position: relative;
+}
+
+.card-data .def {
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+
+/* folder display formatting */
+
+.folder_name {
+    display: inline-block;
+    margin: 1%;
+    position: relative;
+    width: 31%;
+}
+
+.folders_btn{
+    background-color: #252525; 
+    color: #FF00FF;
+    display: inline-block;
+    font-size: 32px;
+    height: 100px;
+    outline: 5px solid #FF00FF;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.folders_btn:hover {
+    background-color: #00FFFF;
+    color: #444444;
+    cursor: pointer;
+}

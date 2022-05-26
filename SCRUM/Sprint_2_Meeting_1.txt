@@ -1,0 +1,40 @@
+SCRUM Meeting 1 for CardMe
+Prepared by: Jackson Hagood
+Meeting Date: 4/6/2022
+
+Meeting Attendees:
+* Kiran Bhattarai
+* Jackson Hagood
+* Mahirah Samah
+
+Meeting Agenda Items
+* Figure out how to store flashcards in user’s cache (or find an alternative)
+* Discuss YouTube API
+
+Status Update Since Last Meeting
+
+Accomplishments:
+* Finished sprint 1 documents 
+
+Tasks Completed:
+* Make flashcards to be stored in .csv files | Mahirah, Kiran, Jackson | No
+* Display flashcards | Mahirah, Kiran, Jackson | No
+* Sprint 1 documents | Kiran, Mahirah, and Jackson | Yes
+
+Before The Next Meeting
+
+Plans:
+* Implement Google Firebase
+* Implement YouTube API
+
+Task Assignments:
+* Store flashcards in Google Firebase database | Mahirah Jackson
+* Implement YouTube API | Kiran
+
+Minutes from Previous Meeting
+Objectives from the previous meeting were moved forward in order to allow for the completion of
+the Sprint 1 document and materials. The team is still on track to complete items on time as
+progress during Sprint 1 was ahead of schedule. Moving forward, the objective to store flashcards
+in the user’s cache was abandoned in favor of a Google Firebase database, which Mahirah and Jackson
+will implement. It was also decided to implement an API for searching relevant YouTube videos,
+rather than the Quizlet API. Kiran will work on implementing  this.

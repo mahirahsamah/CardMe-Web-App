@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<!-- CardMe | CSCE 315 Section 900 Team 3 | Kiran Bhattarai, Jackson Hagood, and Mahirah Samah -->
+
+<html>
+    <head>
+        <title>CardMe | {{fold_n}}</title>
+
+        <link id = "theme" rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='css/style.css')}}"/>
+
+        <script>
+            function changeTheme() {
+                var style = document.getElementsByTagName("link")[0]; 
+
+                if (style.getAttribute("href") == "{{url_for('static', filename='css/style.css')}}") {
+                    style.setAttribute("href", "{{url_for('static', filename='css/contrast.css')}}"); 
+                    localStorage.setItem("sheet", "{{url_for('static', filename='css/contrast.css')}}");
+                } else { 
+                    style.setAttribute("href", "{{url_for('static', filename='css/style.css')}}"); 
+                    localStorage.setItem("sheet", "{{url_for('static', filename='css/style.css')}}");
+                }
+            }
+
+            window.onload = function() {
+                if (localStorage.getItem("sheet") == "{{url_for('static', filename='css/style.css')}}" || localStorage.getItem("sheet") == "{{url_for('static', filename='css/contrast.css')}}") {
+                    document.getElementsByTagName("link")[0].setAttribute("href", localStorage.getItem("sheet"));
+                } else {
+                    document.getElementsByTagName("link")[0].setAttribute("href", "{{url_for('static', filename='css/style.css')}}");
+                }
+            }
+
+            if (window.name == "back") {
+                window.name = "";
+                location.reload();
+            }
+            window.onbeforeunload = function() {
+                window.name = "back"; 
+            }
+
+            function fix(num) {
+                setTimeout(function() {
+                    document.getElementsByClassName("word")[num].style.display = "none";
+                    document.getElementsByClassName("def")[num].style.display = "grid";
+                }, 500)
+            }
+
+        </script>
+    </head>
+
+    <body>
+        <header>
+            <a id = "name" href = "/index"><img src = "{{url_for('static', filename='img/Logo.png')}}" alt = "About"></a>
+
+            <div class = "navigation">
+                <a href = "/folders">My Folders</a>
+                <a href = "/uploadimage">Upload</a>
+            </div>
+        </header>
+        
+        <article>
+            <div class = "center">
+                <h1 style = "float: left;">Folder: {{fold_n}}</h1>
+
+                <form action = "/flashcards" method = "post" style = "float: right;" target="_blank">
+                    <button name = "demoBTN" type = "submit" class = "btn">↓ Print Flashcards</button>
+                </form>
+            </div>
+
+            <div class = "center">
+                <p>    
+                    <div class = "flashcards-pane">
+                        {%for (word, definition, link) in data%}
+                        <div class = "single-card">
+                            <input type = "checkbox" class = "input-wraper" id = "id-{{loop.index0}}">
+                            <label for = "id-{{loop.index0}}" class = "flip-pane">
+                            <div class = "card-data" onclick = "changeText(this)">
+                                    <div class = "word" style = "display: grid">
+                                        <p>{{word}}</p>
+                                    </div>
+                                    <div class = "def" style = "display: none;">
+                                        <p>{{definition}}</p>
+                                        <a href = "{{link}}" target = "_blank" onclick = "fix({{loop.index0}})">Learn More</a>
+                                    </div>
+                            </div>
+                            </label>
+                            
+                        </div>
+        
+                        {%endfor%}
+                    </div>
+                </p>
+            </div>
+
+            <div class = "center">
+                <form action = "{{ url_for('editFlashcards') }}" method = "post">
+                    <th><button class = "folders_btn" type = "text" name = "item_fn" value={{fold_n}} required>Edit</button></th>
+                </form>
+            </div>
+
+            <div class = "center">
+                <form action = "/deleteFolder" method = "post">
+                    <th><button class = "folders_btn" type = "text" name = "item_fn" value={{fold_n}} required>Delete</button></th>
+                </form>
+            </div>
+            
+
+            <div class = "center"></div>
+        </article>
+
+        <footer>
+            <p>CSCE 315 Section 900 Team 3</p>
+
+            <button onclick = "changeTheme()" class = "btn" style = "margin-bottom: 16px">Accessibility Mode</button> 
+        </footer>
+
+        <head>
+            <script>
+                function changeText(elem) {
+                    setTimeout(function() {
+                        if (elem.getElementsByClassName("word")[0].style.display == "none") {
+                            elem.getElementsByClassName("word")[0].style.display = "grid";
+                            elem.getElementsByClassName("def")[0].style.display = "none";
+                        }
+                        else {
+                            elem.getElementsByClassName("word")[0].style.display = "none";
+                            elem.getElementsByClassName("def")[0].style.display = "grid";
+                        }
+                    }, 270)
+                }
+            </script>
+        </head>
+    </body>
+</html>

@@ -1,0 +1,264 @@
+/* CardMe | CSCE 315 Section 900 Team 3 | Kiran Bhattarai, Jackson Hagood, and Mahirah Samah */
+
+@font-face {
+    font-family: Noto;
+    src: url("NotoSans.ttf");
+}
+
+/* general formatting */
+
+body {
+    font-family: Noto;
+    margin: 0;
+}
+
+header {
+    background-color: #252525;
+    border-bottom: solid 15px #00FFFF;
+    height: 120px;
+    overflow: hidden;   
+}
+
+header img {
+    float: left;
+    height: 100%;
+    margin-left: 15%;
+}
+
+.navigation {
+    margin-right: 15%;
+    padding: 20px 0px 20px 0px;
+}
+
+.navigation a {
+    color: #FFFFFF;
+    float: right;
+    font-size: 30px;
+    padding: 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.navigation a:hover {
+    color: #00FFFF;
+}
+
+article {
+    background-color: #444444;
+    color: #FFFFFF;
+    min-height: 100vh;
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+article p {
+    font-size: 20px;
+}
+
+article hr {
+    border: 2px solid #FFFFFF;
+    background-color: #FFFFFF;
+}
+
+article a {
+    color: #00FFFF;
+}
+
+.center {
+    clear: both;
+    padding-top: 20px;
+    width: 100%;
+}
+
+footer {
+    background-color: #252525;
+    border-top: solid 15px #00FFFF;
+    overflow: hidden;
+    padding: 30px 0px 30px 0px;
+    text-align: center;
+}
+
+footer p {
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+.btn {
+    background-color: #00FFFF;
+    border: none;
+    color: #252525;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    margin: 8px 0px;
+    padding: 16px 16px;
+    text-align: center;
+    text-decoration: none;
+}
+
+/* flashcards display formatting */
+
+.flashcards-pane {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+}
+
+.input-wraper {
+    display: none;
+}
+
+label div.card-data {
+    transition: 1s;
+}
+
+.input-wraper:checked + label div.card-data{
+    transform: rotateY(180deg);
+}
+
+.single-card {
+    height: 200px;
+    margin: 1%;
+    width: 98%;
+}
+
+.flip-pane {
+    height: 200px;
+    margin: 1%;
+    width: 98%;
+}
+
+.card-data {
+    align-items: center;
+    background-color: #252525;
+    border: none;
+    height: 200px;
+    position: relative;
+    width: 100%;
+}
+
+.card-data .word{
+    justify-content: center;
+    position: relative;
+}
+
+.card-data .def {
+    justify-content: center;
+    transform: rotateY(180deg);
+}
+
+/* folder display formatting */
+
+.folder_name {
+    display: inline-block;
+    margin: 1%;
+    position: relative;
+    width: 31%;
+}
+
+.folders_btn{
+    background-color: #252525; 
+    border: none;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 24px;
+    height: 100px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+}
+
+.folders_btn:hover {
+    background-color: #00FFFF;
+    color: #444444;
+    cursor: pointer;
+}
+
+.outer {
+    position: absolute;
+    
+    top: 26%;
+    left: 50px;
+}
+
+.inner {
+    height:80px;
+    width:700px;
+}
+
+.l2 {
+    padding-left: 30px;
+}
+
+.i1 {
+    height:20px;
+    width:120px;
+    padding-right: 50px;
+}
+
+.i2 {
+    height:20px;
+    width:230px;
+}
+
+
+.edit_page_btn1 {
+    background-color: #252525; 
+    border: none;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 24px;
+    height: 70px;
+    width: 13%;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    top: 70px;
+    left: 1043px;
+}
+
+.edit_page_btn1:hover {
+    background-color: #00FFFF;
+    color: #444444;
+    cursor: pointer;
+}
+
+.edit_page_btn2 {
+    background-color: #252525; 
+    border: none;
+    color: #FFFFFF;
+    display: inline-block;
+    font-size: 24px;
+    height: 70px;
+    width: 13%;
+    text-align: center;
+    text-decoration: none;
+    position: relative;
+    top: 160px;
+    left: 900px;
+}
+
+.edit_page_btn2:hover {
+    background-color: #00FFFF;
+    color: #444444;
+    cursor: pointer;
+}
+
+.delete_card_button {
+    background-color: #252525; 
+    border: none;
+    color: #FFFFFF;
+    font-size: 20px;
+    height: 30px;
+    width: 30px;
+    text-decoration: none;
+    position: relative;
+    top: 1.5px;
+    left: 15px;
+}
+
+.delete_card_button:hover {
+    background-color: #00FFFF;
+    color: #444444;
+    cursor: pointer;
+}

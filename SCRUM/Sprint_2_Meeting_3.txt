@@ -1,0 +1,44 @@
+SCRUM Meeting 3 for CardMe
+Prepared by: Kiran Bhattarai
+Meeting Date: 4/18/2022
+
+Meeting Attendees:
+* Kiran Bhattarai
+* Jackson Hagood
+* Mahirah Samah
+
+Meeting Agenda Items
+* Make Youtube API more versatile to large amount of calls
+* Allow user to download the generated PDF
+
+
+Status Update Since Last Meeting
+
+Accomplishments:
+* Implement multiple API keys for Youtube
+* Each folder in folders page links to a flashcard page displaying data in it
+
+
+Tasks Completed:
+* Created logo | Jackson | yes
+* Linked folders to flashcards | Mahriah | yes
+* Implement multiple API keys | Kiran | yes
+
+Before The Next Meeting
+
+Plans:
+* Get started on implementing accessibility features such as larger fonts
+* Allow user to alter existing flashcards and add new ones
+
+Task Assignments:
+* Add and implement delete folder button  | Mahriah
+* Add edit button on the flashcards page | Kiran
+* Add a button that enlarges all fonts on the website | Jackson
+
+
+
+Minutes from Previous Meeting
+Kiran was able to add more API keys for youtube which allows for more calls to the API and avoided
+reaching max quota. Jackson was able to implement a feature to allow users to download the
+generated flashcards as a PDF. Mahriah was able to finish and refine the folders page which allows
+the user to pick a folder in the database and links the user to the flashcards page.

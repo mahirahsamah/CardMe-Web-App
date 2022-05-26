@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!-- CSCE 315-900-3 -->
+
+<html>
+    <head>
+        <link id = "theme" rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='css/style.css')}}"/>
+
+        <script>
+            function changeTheme() {
+                var style = document.getElementsByTagName("link")[0]; 
+
+                if (style.getAttribute("href") == "{{url_for('static', filename='css/style.css')}}") {
+                    style.setAttribute("href", "{{url_for('static', filename='css/contrast.css')}}"); 
+                    localStorage.setItem("sheet", "{{url_for('static', filename='css/contrast.css')}}");
+                } else { 
+                    style.setAttribute("href", "{{url_for('static', filename='css/style.css')}}"); 
+                    localStorage.setItem("sheet", "{{url_for('static', filename='css/style.css')}}");
+                }
+            }
+
+            window.onload = function() {
+                if (localStorage.getItem("sheet") == "{{url_for('static', filename='css/style.css')}}" || localStorage.getItem("sheet") == "{{url_for('static', filename='css/contrast.css')}}") {
+                    document.getElementsByTagName("link")[0].setAttribute("href", localStorage.getItem("sheet"));
+                } else {
+                    document.getElementsByTagName("link")[0].setAttribute("href", "{{url_for('static', filename='css/style.css')}}");
+                }
+            }
+
+            function addNewWord() {
+                console.log("here");
+                var data_len = document.getElementById("length-data").getAttribute("data-len");
+
+                const label_1 = document.createElement("label");
+                label_1.className = "l1";
+                label_1.id = "wordlabel-" + data_len;
+                label_1.for = "word-" + data_len;
+                label_1.innerHTML = "Word:";
+                label_1.setAttribute("form", "outer-form");
+                
+                const input_1 = document.createElement("input");
+                input_1.className = "i1";
+                input_1.type = "text";
+                input_1.id = "word-" + data_len;
+                input_1.name = "word-" + data_len;
+                input_1.value = "New Word";
+                input_1.setAttribute("form", "outer-form");
+
+                const label_2 = document.createElement("label");
+                label_2.className = "l2";
+                label_2.id = "deflabel-" + data_len;
+                label_2.for = "def-" + data_len;
+                label_2.innerHTML = "Definition:";
+                label_2.form = "outer-form";
+                
+                const input_2 = document.createElement("input");
+                input_2.className = "i2";
+                input_2.type = "text";
+                input_2.id = "def-" + data_len;
+                input_2.name = "def-" + data_len;
+                input_2.value = "New Definition";
+                input_2.setAttribute("form", "outer-form");
+
+                const deleteButton = document.createElement("button");
+                deleteButton.className = "delete_card_button";
+                deleteButton.id = "deletebutton-" + data_len;
+                deleteButton.setAttribute("onclick", "deleteCard(" + data_len + ")");
+                deleteButton.innerHTML = "x";
+
+                
+                const outerdiv = document.createElement("div");
+                outerdiv.className = "inner";
+                outerdiv.appendChild(label_1);
+                outerdiv.appendChild(input_1);
+                outerdiv.appendChild(label_2);
+                outerdiv.appendChild(input_2);
+                outerdiv.appendChild(deleteButton);
+
+                document.getElementsByClassName("outer")[0].appendChild(outerdiv);
+                
+
+                document.getElementById("length-data").setAttribute("data-len", (parseInt(data_len) + 1).toString());
+                
+            }
+
+            function deleteCard(num) {
+                document.getElementById("word-" + num).remove();
+                document.getElementById("def-" + num).remove();
+                document.getElementById("wordlabel-" + num).remove();
+                document.getElementById("deflabel-" + num).remove();
+                document.getElementById("deletebutton-" + num).remove();
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <header>
+            <a href = "/index"><img src = "{{url_for('static', filename='img/Logo.png')}}" alt = "About"></a>
+
+            <div class = "navigation">
+                <a href = "/folders">My Folders</a>
+                <a href = "/uploadimage">Upload</a>
+            </div>
+        </header>   
+
+        <article>
+            <div class = main>
+                <meta id="length-data" data-len = "{{data|length}}">
+                <form action = "{{ url_for('confirmEdit', folderName=fName) }}" method="post" id="outer-form"></form>
+
+                <div class = "outer">
+                    {%for (word, def) in data%}
+                        <div class = "inner">
+                            <label class = "l1" id="wordlabel-{{loop.index0}}" for="word-{{loop.index0}}" form="outer-form">Word:</label>
+                            <input class = "i1" type="text" id="word-{{loop.index0}}" name="word-{{loop.index0}}" value="{{word}}" form="outer-form">
+
+                            <label class = "l2" id="deflabel-{{loop.index0}}" for="def-{{loop.index0}}" form="outer-form">Definition:</label>
+                            <input class = "i2" type="text" id="def-{{loop.index0}}" name="def-{{loop.index0}}" value="{{def}}" form="outer-form">
+
+                            <button class="delete_card_button" id= "deletebutton-{{loop.index0}}" onclick="deleteCard({{loop.index0}})">x</button>
+                        </div>
+                    {%endfor%}                    
+                </div>
+    
+                <button class="edit_page_btn1" onclick = "addNewWord()">Add New</button>
+                <input name="item_fn" value="{{fName}}" style="display: none;" form="outer-form">
+                <input  class = "edit_page_btn2" id = "submit-button" type="submit" value="Submit" form="outer-form">
+                
+            </div>
+
+        </article>
+
+
+        <footer>
+            <p>CSCE 315 Section 900 Team 3</p>
+            <button onclick = "changeTheme()" class = "btn" style = "margin-bottom: 16px">Accessibility Mode</button> 
+        </footer>
+    </body>
+</html>
+
+<!--<button type="button" class = "folder_btn" role="button">Folders</button>-->

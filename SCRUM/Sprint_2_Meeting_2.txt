@@ -1,0 +1,46 @@
+SCRUM Meeting 2 for CardMe
+Prepared by: Mahirah Samah
+Meeting Date: 4/11/2022
+
+Meeting Attendees:
+* Kiran Bhattarai
+* Jackson Hagood
+* Mahirah Samah
+
+Meeting Agenda Items
+* Set up a Google Firebase database to store folders and its flashcards under the user’s IP address
+* Append to the database when user uploads an image
+* Extract folder information from the database based on the user’s IP address
+* Extract all the keyword/definition pairs from each folder made by the user
+* Display folders in the form of buttons on the Folders page that route to their respective flashcards page
+
+Status Update Since Last Meeting
+
+Accomplishments:
+* Integrated the YouTube API with each flashcard
+* Set up and store IP addresses, folders, and flashcards information in database
+
+Tasks Completed:
+* Implement YouTube API | Kiran | Yes
+* Store flashcards in Google Firebase database | Mahirah, Jackson | Yes
+* Display folder structure in the web application | Mahirah | Yes
+
+Before The Next Meeting
+
+Plans:
+* Discuss how to display flashcards in a suitable format
+* Web page to PDF conversion with API
+
+Task Assignments:
+* Format Youtube API to accept large amount of calls | Kiran
+* Display flashcards in a fixed format | Kiran
+* Generate PDF from web page | Jackson
+
+Minutes from Previous Meeting
+Kiran was successful in testing the YouTube API; given a specific word, the API generates a link to
+a YouTube video that pertains to that word. Jackson and Mahirah were able to create a Google
+Firebase real-time database that stores all the user’s flashcards information in a tree-like
+structure. The user’s IP address is used at the user’s identity, under which are the folders that
+the user created. Each folder contains a set of flashcards. Several calls to this database are made
+each time the user uploads files or routes into a folder. Mahirah implemented displaying these
+folders in the web application. 
